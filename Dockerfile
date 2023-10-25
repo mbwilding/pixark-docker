@@ -8,13 +8,14 @@ COPY start_pixark.sh /start_pixark.sh
 RUN chmod +x /start_pixark.sh && \
     echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf && \
     pacman -Syu --noconfirm && \
-    pacman -S wget wine lib32-libunwind --noconfirm && \
+    pacman -S wget wine winetricks lib32-libunwind --noconfirm && \
     \
     wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz && \
     mkdir -p /opt/steamcmd && \
     tar -xvzf steamcmd_linux.tar.gz -C /opt/steamcmd && \
     rm steamcmd_linux.tar.gz && \
-    chmod +x /opt/steamcmd/linux32/steamcmd
+    chmod +x /opt/steamcmd/linux32/steamcmd && \
+    chmod +x /opt/steamcmd/steamcmd.sh
 
 # Set environment variables with default values
 ENV WORLD_TYPE=CubeWorld_Light
