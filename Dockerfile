@@ -15,8 +15,6 @@ RUN dpkg --add-architecture i386 && \
 RUN wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz && \
     tar -xvzf steamcmd_linux.tar.gz
 
-COPY ./ShooterGame /pixarkserver/ShooterGame
-
 # Copy the startup script to the container
 COPY start_pixark.sh /pixarkserver/start_pixark.sh
 RUN chmod +x /pixarkserver/start_pixark.sh
