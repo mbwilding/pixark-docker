@@ -1,4 +1,4 @@
-FROM greyltc/archlinux-aur:paru
+FROM steamcmd/steamcmd:latest
 
 WORKDIR /pixark
 
@@ -8,8 +8,13 @@ COPY start_pixark.sh /start_pixark.sh
 RUN chmod +x /start_pixark.sh && \
     echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf && \
     pacman -Syu --noconfirm && \
-    pacman -S wine --noconfirm && \
-    paru -S steamcmd --noconfirm
+    pacman -S wget wine --noconfirm && \
+    paru -S steamcmd --noconfirm && \
+    wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz && \
+    tar -xvzf steamcmd_linux.tar.gz && \
+    rm steamcmd_linux.tar.gz && \
+    chmod +x /pixark/linux32/steamcmd && \
+    echo 'export PATH=$PATH:/pixark/linux32/' >> ~/.bashrc
 
 # Set environment variables with default values
 ENV WORLD_TYPE=CubeWorld_Light
