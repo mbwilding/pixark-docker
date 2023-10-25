@@ -3,10 +3,11 @@ FROM ubuntu:22.04
 WORKDIR /pixark
 
 # Update and install packages
-RUN apt-get install software-properties-common -y && \
+RUN apt-get update -y && apt-get upgrade -y && \
     add-apt-repository multiverse && \
     dpkg --add-architecture i386 && \
-    apt-get update && apt-get install -y \
+    apt-get update && \
+    apt-get install -y \
     wget \
     wine64 \
     wine32 \
