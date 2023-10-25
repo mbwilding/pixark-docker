@@ -1,22 +1,15 @@
-FROM ubuntu:22.04 
+FROM greyltc/archlinux-aur:paru
 
 WORKDIR /pixark
 
-# Update and install packages
-RUN apt-get update -y && apt-get upgrade -y && \
-    add-apt-repository multiverse && \
-    dpkg --add-architecture i386 && \
-    apt-get update && \
-    apt-get install -y \
-    wget \
-    wine64 \
-    wine32 \
-    lib32gcc-s1 \
-    steamcmd
-
 # Copy the startup script to the container
 COPY start_pixark.sh /start_pixark.sh
-RUN chmod +x /start_pixark.sh
+
+RUN chmod +x /start_pixark.sh && \
+    sed -i '/#\[multilib\]/,/#Include = \/etc\/pacman.d\/mirrorlist/{s/^#//g}' /etc/pacman.conf && \
+    pacman -Syu --noconfirm && \
+    pacman -S wine --noconfirm && \
+    paru -S steamcmd --noconfirm
 
 # Set environment variables with default values
 ENV WORLD_TYPE=CubeWorld_Light
