@@ -1,22 +1,21 @@
 FROM debian:bullseye-slim
 
-WORKDIR /pixarkserver
+WORKDIR /pixark
 
 # Update and install packages
-RUN dpkg --add-architecture i386 && \
+RUN add-apt-repository multiverse && \
+    apt-get install software-properties-common -y && \
+    dpkg --add-architecture i386 && \
     apt-get update && apt-get install -y \
     wget \
     wine64 \
     wine32 \
-    lib32gcc-s1
-
-# Download and install steamcmd
-RUN wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz && \
-    tar -xvzf steamcmd_linux.tar.gz
+    lib32gcc-s1 \
+    steamcmd
 
 # Copy the startup script to the container
-COPY start_pixark.sh /pixarkserver/start_pixark.sh
-RUN chmod +x /pixarkserver/start_pixark.sh
+COPY start_pixark.sh /start_pixark.sh
+RUN chmod +x /start_pixark.sh
 
 # Set environment variables with default values
 ENV WORLD_TYPE=CubeWorld_Light
@@ -46,4 +45,4 @@ ENV CUBE_PORT=27018
 EXPOSE 27015 27016 27017 27018
 
 # Use the startup script as the command
-CMD ["/pixarkserver/start_pixark.sh"]
+CMD ["/start_pixark.sh"]

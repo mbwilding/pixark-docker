@@ -22,3 +22,10 @@ You can customize your PixARK server by setting the appropriate environment vari
 - **USE_ALT_DIR**: Use alternative directory (default: `False`).
 - **ALT_SAVE_DIR**: (Optional) Alternative save directory.
 - **SERVER_PASSWORD**: (Optional) Server password.
+
+## Ports
+
+- 27015
+- 27016
+- 27017 
+- 27018

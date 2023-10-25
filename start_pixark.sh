@@ -6,9 +6,9 @@ if [ ! -d "$HOME/.wine" ]; then
 fi
 
 # Log in to Steam anonymously and download the PixARK dedicated server app
-./steamcmd.sh +login anonymous +force_install_dir ./pixark +app_update 824360 validate +quit
+steamcmd +force_install_dir ./pixark +login anonymous +app_update 824360 validate +quit
 
-CMD_START="wine64 /pixarkserver/ShooterGame/Binaries/Win64/PixARKServer.exe ${WORLD_TYPE}"
+CMD_START="wine64 /pixark/ShooterGame/Binaries/Win64/PixARKServer.exe ${WORLD_TYPE}"
 
 # Append the settings based on ? parameters
 [ ! -z "$DELAY_REG_SERVER" ] && CMD_START="${CMD_START}?DelayRegisterServer=${DELAY_REG_SERVER}"
@@ -27,10 +27,10 @@ CMD_START="wine64 /pixarkserver/ShooterGame/Binaries/Win64/PixARKServer.exe ${WO
 [ "$GAMEPLAY_LOGGING" == "True" ] && CMD_START="${CMD_START} -gameplaylogging"
 [ "$LOG" == "True" ] && CMD_START="${CMD_START} -log"
 [ ! -z "$CULTURE_FOR_COOKING" ] && CMD_START="${CMD_START} -CULTUREFORCOOKING=${CULTURE_FOR_COOKING}"
+[ ! -z "$PORT" ] && CMD_START="${CMD_START} -Port=${PORT}"
 [ ! -z "$CUBE_WORLD" ] && CMD_START="${CMD_START} -cubeworld=${CUBE_WORLD}"
 [ ! -z "$QUERY_PORT" ] && CMD_START="${CMD_START} -QueryPort=${QUERY_PORT}"
 [ ! -z "$CUBE_PORT" ] && CMD_START="${CMD_START} -CubePort=${CUBE_PORT}"
-[ ! -z "$PORT" ] && CMD_START="${CMD_START} -Port=${PORT}"
 [ "$NO_BATTLEYE" == "True" ] && CMD_START="${CMD_START} -NoBattlEye"
 
 # Execute the command
