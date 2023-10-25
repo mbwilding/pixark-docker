@@ -8,7 +8,7 @@ fi
 # Log in to Steam anonymously and download the PixARK dedicated server app
 ./steamcmd.sh +login anonymous +force_install_dir ./pixark +app_update 824360 validate +quit
 
-CMD_START="wine /pixarkserver/ShooterGame/Binaries/Win64/PixARKServer.exe ${WORLD_TYPE}"
+CMD_START="wine64 /pixarkserver/ShooterGame/Binaries/Win64/PixARKServer.exe ${WORLD_TYPE}"
 
 # Append the settings based on ? parameters
 [ ! -z "$DELAY_REG_SERVER" ] && CMD_START="${CMD_START}?DelayRegisterServer=${DELAY_REG_SERVER}"
