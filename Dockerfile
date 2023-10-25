@@ -11,6 +11,7 @@ RUN chmod +x /start_pixark.sh && \
     pacman -S wget wine lib32-libunwind --noconfirm && \
     \
     wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz && \
+    mkdir -p /opt/steamcmd && \
     tar -xvzf steamcmd_linux.tar.gz -C /opt/steamcmd && \
     rm steamcmd_linux.tar.gz && \
     chmod +x /opt/steamcmd/linux32/steamcmd
