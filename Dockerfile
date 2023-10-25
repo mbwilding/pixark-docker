@@ -22,10 +22,6 @@ RUN chmod +x /pixarkserver/start_pixark.sh
 ENV WORLD_TYPE=CubeWorld_Light
 ENV SEED=12345
 ENV MAX_PLAYERS=20
-ENV PORT=27015
-ENV QUERY_PORT=27016
-ENV RCON_PORT=27017
-ENV CUBE_PORT=27018
 ENV DELAY_REG_SERVER=True
 ENV RAW_SOCKETS=True
 ENV SESSION_NAME=MyPixarkServer
@@ -40,7 +36,13 @@ ENV USE_ALT_DIR=False
 # ENV ALT_SAVE_DIR=Trevoria
 # ENV SERVER_PASSWORD=letmein
 
-# Expose necessary ports
+# Static ports
+ENV PORT=27015
+ENV QUERY_PORT=27016
+ENV RCON_PORT=27017
+ENV CUBE_PORT=27018
+
+# Expose necessary ports, match the ports above
 EXPOSE 27015 27016 27017 27018
 
 # Use the startup script as the command
