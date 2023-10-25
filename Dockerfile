@@ -14,9 +14,7 @@ RUN mkdir -p /pixark && \
     tar -xvzf steamcmd_linux.tar.gz -C /opt/steamcmd && \
     rm steamcmd_linux.tar.gz && \
     chmod +x /opt/steamcmd/linux32/steamcmd && \
-    chmod +x /opt/steamcmd/steamcmd.sh && \
-    echo "alias steamcmd='/opt/steamcmd/steamcmd.sh'" >> ~/.bashrc && \
-    source ~/.bashrc
+    chmod +x /opt/steamcmd/steamcmd.sh
 
 # Set environment variables with default values
 ENV WORLD_TYPE=CubeWorld_Light
