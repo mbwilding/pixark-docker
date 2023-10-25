@@ -5,20 +5,15 @@ WORKDIR /pixark
 # Copy the startup script to the container
 COPY start_pixark.sh /start_pixark.sh
 
-RUN STEAMCMD_DIR="/opt/steamcmd" && \
-    chmod +x /start_pixark.sh && \
+RUN chmod +x /start_pixark.sh && \
     echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf && \
     pacman -Syu --noconfirm && \
-    pacman -S wget wine --noconfirm && \
+    pacman -S wget wine lib32-libunwind --noconfirm && \
     \
-    mkdir -p $STEAMCMD_DIR && \
-    cd $STEAMCMD_DIR && \
     wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz && \
-    tar -xvzf steamcmd_linux.tar.gz && \
+    tar -xvzf steamcmd_linux.tar.gz -C /opt/steamcmd && \
     rm steamcmd_linux.tar.gz && \
-    \
-    chmod +x $STEAMCMD_DIR/linux32/steamcmd && \
-    echo 'export PATH=$PATH:'$STEAMCMD_DIR'/linux32/' >> ~/.bashrc
+    chmod +x /opt/steamcmd/linux32/steamcmd
 
 # Set environment variables with default values
 ENV WORLD_TYPE=CubeWorld_Light
