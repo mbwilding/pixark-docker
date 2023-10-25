@@ -1,10 +1,10 @@
-FROM ubuntu:22.04
+FROM debian:bookworm-slim
 
 WORKDIR /pixark
 
 # Update and install packages
-RUN add-apt-repository multiverse && \
-    apt-get install software-properties-common -y && \
+RUN apt-get install software-properties-common -y && \
+    add-apt-repository multiverse && \
     dpkg --add-architecture i386 && \
     apt-get update && apt-get install -y \
     wget \
