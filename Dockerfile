@@ -6,10 +6,9 @@ WORKDIR /pixark
 COPY start_pixark.sh /start_pixark.sh
 
 RUN chmod +x /start_pixark.sh && \
-    sudo sed -i '/#\[multilib\]/,/#Include = \/etc\/pacman.d\/mirrorlist/{s/^#//g}' /etc/pacman.conf && \
-    cat /etc/pacman.conf && \
-    sudo pacman -Syu --noconfirm && \
-    sudo pacman -S wine --noconfirm && \
+    echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf && \
+    pacman -Syu --noconfirm && \
+    pacman -S wine --noconfirm && \
     paru -S steamcmd --noconfirm
 
 # Set environment variables with default values
