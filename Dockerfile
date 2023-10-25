@@ -1,11 +1,10 @@
 FROM archlinux:latest
 
-WORKDIR /pixark
-
 # Copy the startup script to the container
 COPY start_pixark.sh /start_pixark.sh
 
-RUN chmod +x /start_pixark.sh && \
+RUN mkdir -p /pixark && \
+    chmod +x /start_pixark.sh && \
     echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf && \
     pacman -Syu --noconfirm && \
     pacman -S wget wine winetricks lib32-libunwind --noconfirm && \

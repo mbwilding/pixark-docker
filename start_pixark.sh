@@ -6,7 +6,7 @@ if [ ! -d "$HOME/.wine" ]; then
 fi
 
 # Log in to Steam anonymously and download the PixARK dedicated server app
-/opt/steamcmd/steamcmd.sh +force_install_dir ./pixark +login anonymous +app_update 824360 validate +quit
+/opt/steamcmd/steamcmd.sh +force_install_dir ./pixark +login anonymous +app_update 824360 +quit
 
 CMD_START="wine64 /pixark/ShooterGame/Binaries/Win64/PixARKServer.exe ${WORLD_TYPE}"
 
