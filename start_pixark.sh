@@ -8,6 +8,9 @@ fi
 # Log in to Steam anonymously and download the PixARK dedicated server app
 steamcmd +force_install_dir ./pixark +login anonymous +app_update 824360 validate +quit
 
+cd /pixark || exit
+tree | less
+
 CMD_START="wine64 /pixark/ShooterGame/Binaries/Win64/PixARKServer.exe ${WORLD_TYPE}"
 
 # Append the settings based on ? parameters

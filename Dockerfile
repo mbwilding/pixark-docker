@@ -7,7 +7,7 @@ RUN mkdir -p /pixark && \
     chmod +x /start_pixark.sh && \
     echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf && \
     pacman -Syu --noconfirm && \
-    pacman -S wget wine winetricks lib32-libunwind --noconfirm && \
+    pacman -S wget wine winetricks lib32-libunwind tree --noconfirm && \
     \
     wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz && \
     mkdir -p /opt/steamcmd && \
