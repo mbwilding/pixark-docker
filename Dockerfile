@@ -8,8 +8,7 @@ RUN dpkg --add-architecture i386 && \
     wget \
     wine64 \
     wine32 \
-    winetricks \
-    lib32gcc1
+    lib32gcc-s1
 
 # Download and install steamcmd
 RUN wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz && \
