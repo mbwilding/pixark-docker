@@ -1,4 +1,4 @@
-FROM steamcmd/steamcmd:latest
+FROM archlinux:latest
 
 WORKDIR /pixark
 
