@@ -12,6 +12,7 @@ RUN echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.co
     rm steamcmd_linux.tar.gz && \
     groupadd -g 568 apps && \
     useradd -u 568 -g 568 apps && \
+    mkdir -p /home/apps && \
     mkdir -p /persistence && \
     chmod +x /start_server.sh && \
     chmod +x /opt/steamcmd/linux32/steamcmd && \
