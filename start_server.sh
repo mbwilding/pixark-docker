@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Log in to Steam anonymously and download the PixARK dedicated server app
-/opt/steamcmd/steamcmd.sh +force_install_dir /persistence +@sSteamCmdForcePlatformType windows +login anonymous +app_update 824360 validate +quit
+/opt/steamcmd/steamcmd.sh +force_install_dir /persistence/.steam +@sSteamCmdForcePlatformType windows +login anonymous +app_update 824360 validate +quit
 
 # Start command, preparing for command building
 CMD_START="wine64 /persistence/ShooterGame/Binaries/Win64/PixARKServer.exe"
@@ -10,7 +10,7 @@ CMD_START="${CMD_START} ${WORLD_TYPE}"
 # Append the settings based on ? parameters
 [ -n "$DELAY_REG_SERVER" ] && CMD_START="${CMD_START}?DelayRegisterServer=${DELAY_REG_SERVER}"
 [ -n "$RAW_SOCKETS" ] && CMD_START="${CMD_START}?bRawSockets=${RAW_SOCKETS}"
-[ -n "$SERVER_NAME" ] && CMD_START="${CMD_START}?SessionName=${SERVER_NAME}" && CMD_START="${CMD_START} -cubeworld=${SERVER_NAME}"
+[ -n "$SERVER_NAME" ] && CMD_START="${CMD_START}?SessionName=${SERVER_NAME}"
 [ -n "$ALT_SAVE_DIR" ] && CMD_START="${CMD_START}?AltSaveDirectoryName=${ALT_SAVE_DIR}"
 [ -n "$SERVER_PASSWORD" ] && CMD_START="${CMD_START}?ServerPassword=${SERVER_PASSWORD}"
 [ -n "$SERVER_ADMIN_PASSWORD" ] && CMD_START="${CMD_START}?ServerAdminPassword=${SERVER_ADMIN_PASSWORD}"
@@ -24,6 +24,7 @@ CMD_START="${CMD_START} ${WORLD_TYPE}"
 [ "$GAMEPLAY_LOGGING" == "True" ] && CMD_START="${CMD_START} -gameplaylogging"
 [ "$LOG" == "True" ] && CMD_START="${CMD_START} -log"
 [ -n "$CULTURE_FOR_COOKING" ] && CMD_START="${CMD_START} -CULTUREFORCOOKING=${CULTURE_FOR_COOKING}"
+[ -n "$WORLD_DIR" ] CMD_START="${CMD_START} -cubeworld=${WORLD_DIR}"
 [ -n "$STEAM_PORT" ] && CMD_START="${CMD_START} -Port=${STEAM_PORT}"
 [ -n "$QUERY_PORT" ] && CMD_START="${CMD_START} -QueryPort=${QUERY_PORT}"
 [ -n "$CUBE_PORT" ] && CMD_START="${CMD_START} -CubePort=${CUBE_PORT}"

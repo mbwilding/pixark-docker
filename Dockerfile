@@ -17,16 +17,16 @@ RUN echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.co
     chmod +x /opt/steamcmd/steamcmd.sh && \
     chown -R steam:steam /home/steam && \
     chown -R steam:steam /opt/steamcmd && \
-    chown -R steam:steam /persistence && \
-    chmod 777 /persistence # TODO
+    chown -R steam:steam /persistence
 
 # Set environment variables with default values
+ENV SERVER_NAME=PixarkContainer
+ENV WORLD_DIR=world
 ENV WORLD_TYPE=CubeWorld_Light
 ENV SEED=12345
 ENV MAX_PLAYERS=20
 ENV DELAY_REG_SERVER=True
 ENV RAW_SOCKETS=True
-ENV SERVER_NAME=PixarkContainer
 ENV SERVER_ADMIN_PASSWORD=letmein
 ENV RCON_ENABLED=True
 ENV CULTURE_FOR_COOKING=en

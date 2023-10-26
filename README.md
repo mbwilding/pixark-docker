@@ -7,6 +7,7 @@ This Dockerfile is designed to set up a PixARK dedicated server in a Docker cont
 You can customize your PixARK server by setting the appropriate environment variables. Here are the variables available:
 
 - **SERVER_NAME**: Server name to display in the server browser (default: `PixarkContainer`).
+- **WORLD_DIR**: Directory name for the world (default: `world`).
 - **WORLD_TYPE**: Defines the world type (default: `CubeWorld_Light`).
 - **SEED**: Seed for map generation (default: `12345`).
 - **MAX_PLAYERS**: Max number of players (default: `20`).
