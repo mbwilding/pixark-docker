@@ -30,7 +30,7 @@ You can customize your PixARK server by setting the appropriate environment vari
 
 ## Port forwarding (TCP and UDP)
 
-> These cannot differ between the container and your routers port forwarding.
+> Exposed and forwarded ports must be the same, no remapping.
 
 Make sure to port expose and forward;
 - STEAM_PORT
