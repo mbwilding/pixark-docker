@@ -10,6 +10,7 @@ RUN echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.co
     mkdir -p /opt/steamcmd && \
     tar -xvzf steamcmd_linux.tar.gz -C /opt/steamcmd && \
     rm steamcmd_linux.tar.gz && \
+    groupadd -g 1000 steam && \
     useradd -u 1000 -g 1000 steam && \
     mkdir -p /persistence && \
     chmod +x /start_server.sh && \
