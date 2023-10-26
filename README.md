@@ -6,13 +6,16 @@ This Dockerfile is designed to set up a PixARK dedicated server in a Docker cont
 
 You can customize your PixARK server by setting the appropriate environment variables. Here are the variables available:
 
+- **SERVER_NAME**: Server name to display in the server browser (default: `PixarkContainer`).
 - **WORLD_TYPE**: Defines the world type (default: `CubeWorld_Light`).
 - **SEED**: Seed for map generation (default: `12345`).
 - **MAX_PLAYERS**: Max number of players (default: `20`).
+- **PORT**: Server port (default: `27015`).
+- **QUERY_PORT**: Query port (default: `27016`).
+- **RCON_PORT**: RCON port (default: `27017`).
+- **CUBE_PORT**: Cube port (default: `27018`).
 - **DELAY_REG_SERVER**: Delay server registration (default: `True`).
 - **RAW_SOCKETS**: Use raw sockets (default: `True`).
-- **SESSION_NAME**: Session name (default: `MyPixarkServer`).
-- **CUBE_WORLD**: Cube world name (default: `MyPixarkServer`).
 - **SERVER_ADMIN_PASSWORD**: Admin password (default: `letmein`).
 - **RCON_ENABLED**: Enable RCON (default: `True`).
 - **CULTURE_FOR_COOKING**: Language culture for cooking (default: `en`).
@@ -23,9 +26,12 @@ You can customize your PixARK server by setting the appropriate environment vari
 - **ALT_SAVE_DIR**: (Optional) Alternative save directory.
 - **SERVER_PASSWORD**: (Optional) Server password.
 
-## Ports
+## Port forwarding (TCP and UDP)
 
-- 27015
-- 27016
-- 27017 
-- 27018
+> These cannot differ between the container and your routers port forwarding.
+
+Make sure to port expose and forward;
+- PORT
+- QUERY_PORT
+- RCON_PORT
+- CUBE_PORT
