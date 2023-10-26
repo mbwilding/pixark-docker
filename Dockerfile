@@ -16,8 +16,9 @@ RUN echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.co
     chmod +x /opt/steamcmd/linux32/steamcmd && \
     chmod +x /opt/steamcmd/steamcmd.sh && \
     chown -R steam:steam /home/steam && \
-    chown steam:steam /persistence && \
-    chown -R steam:steam /opt/steamcmd
+    chown -R steam:steam /opt/steamcmd && \
+    chown -R steam:steam /persistence && \
+    chmod 777 /persistence # TODO
 
 # Set environment variables with default values
 ENV WORLD_TYPE=CubeWorld_Light
@@ -45,6 +46,10 @@ ENV CUBE_PORT=27018
 
 # Switch to 'steam' user for the container runtime
 USER steam
+
+# Wine configuration
+ENV WINEDEBUG=-fixme
+ENV WINEPREFIX=/persistence/.wine
 
 # Prepare wine
 RUN wineboot --init
