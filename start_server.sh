@@ -31,4 +31,4 @@ CMD_START="${CMD_START} ${WORLD_TYPE}"
 [ -n "$ADDITIONAL_ARGS" ] && CMD_START="${CMD_START} ${ADDITIONAL_ARGS}"
 
 # Execute the command
-exec "$CMD_START"
+exec $CMD_START
