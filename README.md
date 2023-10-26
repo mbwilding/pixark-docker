@@ -1,6 +1,6 @@
 # PixARK Server
 
-This Dockerfile is designed to set up a PixARK dedicated server in a Docker container.
+This Dockerfile is designed to set up a PixARK dedicated server in a Docker container on TrueNAS Scale primarily.
 
 ## Setting Environment Variables
 
@@ -40,4 +40,4 @@ Make sure to port expose and forward;
 
 ## Persistence
 
-The persistence directory to mount is `/persistence`
+Make a group and user both with the name `steam` with the id `1000` and mount the persistence directory to `/persistence`
