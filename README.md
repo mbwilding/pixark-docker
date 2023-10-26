@@ -10,7 +10,7 @@ You can customize your PixARK server by setting the appropriate environment vari
 - **WORLD_TYPE**: Defines the world type (default: `CubeWorld_Light`).
 - **SEED**: Seed for map generation (default: `12345`).
 - **MAX_PLAYERS**: Max number of players (default: `20`).
-- **PORT**: Server port (default: `27015`).
+- **STEAM_PORT**: Steam port (default: `27015`).
 - **QUERY_PORT**: Query port (default: `27016`).
 - **RCON_PORT**: RCON port (default: `27017`).
 - **CUBE_PORT**: Cube port (default: `27018`).
@@ -32,7 +32,7 @@ You can customize your PixARK server by setting the appropriate environment vari
 > These cannot differ between the container and your routers port forwarding.
 
 Make sure to port expose and forward;
-- PORT
+- STEAM_PORT
 - QUERY_PORT
 - RCON_PORT
 - CUBE_PORT
