@@ -10,8 +10,8 @@ RUN echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.co
     mkdir -p /opt/steamcmd && \
     tar -xvzf steamcmd_linux.tar.gz -C /opt/steamcmd && \
     rm steamcmd_linux.tar.gz && \
-    groupadd -g 1000 steam && \
-    useradd -u 1000 -g 1000 steam && \
+    groupadd -g 568 apps && \
+    useradd -u 568 -g 568 apps && \
     mkdir -p /persistence && \
     chmod +x /start_server.sh && \
     chmod +x /opt/steamcmd/linux32/steamcmd && \
@@ -45,8 +45,8 @@ ENV QUERY_PORT=27016
 ENV RCON_PORT=27017
 ENV CUBE_PORT=27018
 
-# Switch to 'steam' user for the container runtime
-USER steam
+# Switch to 'apps' user for the container runtime
+USER apps
 
 # Wine configuration
 ENV WINEDEBUG=-all
