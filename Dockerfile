@@ -16,9 +16,9 @@ RUN echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.co
     chmod +x /start_server.sh && \
     chmod +x /opt/steamcmd/linux32/steamcmd && \
     chmod +x /opt/steamcmd/steamcmd.sh && \
-    chown -R steam:steam /home/steam && \
-    chown -R steam:steam /opt/steamcmd && \
-    chown -R steam:steam /persistence
+    chown -R apps:apps /home/apps && \
+    chown -R apps:apps /opt/steamcmd && \
+    chown -R apps:apps /persistence
 
 # Set environment variables with default values
 ENV SERVER_NAME=PixarkContainer

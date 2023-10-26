@@ -40,5 +40,5 @@ Make sure to port expose and forward;
 
 ## Persistence
 
-Make a group and user both with the name `steam` with the id `1000` and mount the persistence directory to `/persistence`
-Also add the `steam` user to the `apps` group.
+Mount the persistence directory to `/persistence`
+Make sure the directory on TrueNAS is owned by the user and group `apps`
