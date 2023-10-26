@@ -48,7 +48,7 @@ ENV CUBE_PORT=27018
 USER steam
 
 # Wine configuration
-ENV WINEDEBUG=-fixme
+ENV WINEDEBUG=-all
 ENV WINEPREFIX=/persistence/.wine
 
 # Prepare wine
