@@ -36,3 +36,7 @@ Make sure to port expose and forward;
 - QUERY_PORT
 - RCON_PORT
 - CUBE_PORT
+
+## Persistence
+
+The persistence directory to mount is `/persistence`
