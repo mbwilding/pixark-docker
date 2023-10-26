@@ -1,14 +1,11 @@
 #!/bin/bash
 
-# Set up Wine environment if not already set up
-if [ ! -d "$HOME/.wine" ]; then
-    wineboot --init
-fi
-
 # Log in to Steam anonymously and download the PixARK dedicated server app
 /opt/steamcmd/steamcmd.sh +force_install_dir /persistence +@sSteamCmdForcePlatformType windows +login anonymous +app_update 824360 validate +quit
 
-CMD_START="wine64 /persistence/ShooterGame/Binaries/Win64/PixARKServer.exe ${WORLD_TYPE}"
+# Start command, preparing for command building
+CMD_START="wine64 /persistence/ShooterGame/Binaries/Win64/PixARKServer.exe"
+CMD_START="${CMD_START} ${WORLD_TYPE}"
 
 # Append the settings based on ? parameters
 [ -n "$DELAY_REG_SERVER" ] && CMD_START="${CMD_START}?DelayRegisterServer=${DELAY_REG_SERVER}"

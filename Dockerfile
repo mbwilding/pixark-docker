@@ -8,6 +8,7 @@ RUN mkdir -p /persistence && \
     echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf && \
     pacman -Syu --noconfirm && \
     pacman -S wget wine winetricks lib32-libunwind --noconfirm && \
+    wineboot --init && \
     wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz && \
     mkdir -p /opt/steamcmd && \
     tar -xvzf steamcmd_linux.tar.gz -C /opt/steamcmd && \
