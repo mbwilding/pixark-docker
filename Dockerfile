@@ -3,18 +3,21 @@ FROM archlinux:latest
 # Copy the startup script to the container
 COPY start_server.sh /start_server.sh
 
-RUN mkdir -p /persistence && \
-    chmod +x /start_server.sh && \
-    echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf && \
+RUN echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf && \
     pacman -Syu --noconfirm && \
     pacman -S wget wine winetricks lib32-libunwind --noconfirm && \
-    wineboot --init && \
     wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz && \
-    mkdir -p /opt/steamcmd && \
     tar -xvzf steamcmd_linux.tar.gz -C /opt/steamcmd && \
     rm steamcmd_linux.tar.gz && \
+    useradd -m steam && \
+    mkdir -p /persistence && \
+    mkdir -p /opt/steamcmd && \
+    chmod +x /start_server.sh && \
     chmod +x /opt/steamcmd/linux32/steamcmd && \
-    chmod +x /opt/steamcmd/steamcmd.sh
+    chmod +x /opt/steamcmd/steamcmd.sh && \
+    chown -R steam:steam /home/steam && \
+    chown steam:steam /persistence && \
+    chown -R steam:steam /opt/steamcmd
 
 # Set environment variables with default values
 ENV WORLD_TYPE=CubeWorld_Light
@@ -40,5 +43,11 @@ ENV QUERY_PORT=27016
 ENV RCON_PORT=27017
 ENV CUBE_PORT=27018
 
+# Switch to 'steam' user for the container runtime
+USER steam
+
+# Prepare wine
+RUN wineboot --init
+
 # Use the startup script as the command
-CMD ["/start_pixark.sh"]
+CMD ["/start_server.sh"]
